@@ -23,7 +23,6 @@ public class ChromeSettings implements IWebDriverSettings {
             if (browserVersion != null) {
                 chromeOptions.setCapability("browserVersion", browserVersion);
                 chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {{
-                    put("enableVideo", true);
                     put("name", "Test badge...");
                 }});
             }
