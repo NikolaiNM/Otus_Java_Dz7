@@ -1,0 +1,11 @@
+### IntelliJ IDEA ###
+*.idea
+
+### target ###
+target
+
+### Logs ###
+logs
+
+### iml ###
+*.iml
