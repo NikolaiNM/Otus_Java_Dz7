@@ -25,6 +25,11 @@
         <!--plugin version-->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.1</maven-surefire-plugin.version>
+
+        <!-- Default values for system properties -->
+        <selenium.grid.url>http://localhost:4444/wd/hub</selenium.grid.url>
+        <browser.name>chrome</browser.name>
+        <browser.version>124.0</browser.version>
     </properties>
 
     <dependencies>
@@ -51,33 +56,25 @@
             <scope>test</scope>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.junit.jupiter</groupId>-->
-        <!--            <artifactId>junit-jupiter-api</artifactId>-->
-        <!--            <version>${junit-jupiter-api.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
-        <!--        log4j2-->
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <!-- log4j2 -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j2.api.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log2j2.core.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>${slf4j.nop.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Additional dependency for JUnit Jupiter API -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -90,24 +87,27 @@
     <build>
         <plugins>
 
+            <!-- Compiler plugin for Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <release>${maven.compiler.source}</release>
-                    <!--                    <source>${maven.compiler.source}</source>-->
-                    <!--                    <target>${maven.compiler.target}</target>-->
                 </configuration>
             </plugin>
 
+            <!-- Surefire plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-
+                        <!-- These system properties can be overridden via command line -->
+                        <selenium.grid.url>${selenium.grid.url}</selenium.grid.url>
+                        <browser.name>${browser.name}</browser.name>
+                        <browser.version>${browser.version}</browser.version>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

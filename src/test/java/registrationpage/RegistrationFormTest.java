@@ -15,6 +15,7 @@ public class RegistrationFormTest {
 
     @BeforeEach
     public void init() {
+        String gridUrl = "http://localhost:4444/wd/hub";
         this.driver = WebDriverFactory.create();
         this.onPage = new RegistrationForm(driver);
         onPage.open("/form.html");
